@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Post} from '../post';
+import { User} from '../user';
 import { PostService} from '../post.service';
+import { UserService } from '../user.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -10,10 +12,12 @@ import {Router} from '@angular/router';
 })
 export class PostUserInfoComponent implements OnInit {
   post: Post[];
-  constructor(private postService: PostService, private router: Router) { }
+  user: User[];
+  constructor(private postService: PostService, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.getPost('1');
+    this.getUser(1);
   }
   getPost(id: string): void {
     this.postService.getPost(id)
@@ -21,5 +25,9 @@ export class PostUserInfoComponent implements OnInit {
   }
   goToView(id: number): void {
     this.router.navigateByUrl('/post-view/' + id);
+  }
+  getUser(id: number): void {
+    this.userService.getUser(id)
+      .subscribe(user => this.user = user);
   }
 }
