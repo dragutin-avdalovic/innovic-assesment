@@ -4,6 +4,7 @@ import { User} from '../user';
 import { PostService} from '../post.service';
 import { UserService } from '../user.service';
 import {Router} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-post-user-info',
@@ -13,11 +14,14 @@ import {Router} from '@angular/router';
 export class PostUserInfoComponent implements OnInit {
   post: Post[];
   user: User[];
-  constructor(private postService: PostService, private userService: UserService, private router: Router) { }
+  postId: string;
+  userId: number;
+  constructor(private postService: PostService, private userService: UserService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getPost('1');
-    this.getUser(1);
+    this.postId = this.route.snapshot.paramMap.get('id');
+    this.getPost(this.postId);
+    this.getUser(2);
   }
   getPost(id: string): void {
     this.postService.getPost(id)
