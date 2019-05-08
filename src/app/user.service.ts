@@ -13,4 +13,8 @@ export class UserService {
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.usersUrl);
   }
+  /** GET heroes from the server */
+  getUser(id: string): Observable<User[]> {
+    return this.http.get<User[]>(this.usersUrl + '/' + id);
+  }
 }
