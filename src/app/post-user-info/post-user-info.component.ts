@@ -25,7 +25,7 @@ export class PostUserInfoComponent implements OnInit {
   }
   getPost(id: string): void {
     this.postService.getPost(id)
-      .subscribe(post => this.post = post);
+      .subscribe(post => this.post = post );
   }
   goToView(id: number): void {
     this.router.navigateByUrl('/post-view/' + id);
