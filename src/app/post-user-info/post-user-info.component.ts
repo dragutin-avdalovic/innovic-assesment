@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Post} from '../post';
 import { User} from '../user';
 import { PostService} from '../post.service';
@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './post-user-info.component.html',
   styleUrls: ['./post-user-info.component.scss']
 })
-export class PostUserInfoComponent implements OnInit {
+export class PostUserInfoComponent implements OnInit, AfterViewInit {
   post: Post[];
   user: User[];
   postId: string;
@@ -21,6 +21,8 @@ export class PostUserInfoComponent implements OnInit {
   ngOnInit() {
     this.postId = this.route.snapshot.paramMap.get('id');
     this.getPost(this.postId);
+  }
+  ngAfterViewInit() {
     this.getUser(2);
   }
   getPost(id: string): void {
