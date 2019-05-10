@@ -14,6 +14,7 @@ import { AlertModule } from 'ngx-bootstrap';
 import { PostViewComponent } from './post-view/post-view.component';
 import { PostUserInfoComponent } from './post-user-info/post-user-info.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
+import { PostCommentsComponent } from './post-comments/post-comments.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PostDetailsComponent } from './post-details/post-details.component';
     PostListTableComponent,
     PostViewComponent,
     PostUserInfoComponent,
-    PostDetailsComponent
+    PostDetailsComponent,
+    PostCommentsComponent
   ],
   imports: [
     BrowserModule,

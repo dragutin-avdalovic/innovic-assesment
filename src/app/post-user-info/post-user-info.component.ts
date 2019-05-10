@@ -21,10 +21,9 @@ export class PostUserInfoComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.postId = this.route.snapshot.paramMap.get('id');
     this.getPost(this.postId);
-    this.getUser(2);
+    this.getUser(3);
   }
   ngAfterViewInit() {
-    this.getUser(2);
   }
   getPost(id: string): void {
     this.postService.getPost(id)
