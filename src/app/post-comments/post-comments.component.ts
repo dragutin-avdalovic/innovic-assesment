@@ -16,7 +16,7 @@ export class PostCommentsComponent implements OnInit {
   constructor(private commentsService: CommentsService, private router: Router, private route: ActivatedRoute) { }
   ngOnInit() {
     this.getComments();
-    this.id = this.route.snapshot.paramMap.get('id');
+    this.id = this.route.snapshot.paramMap.get('id').toString();
     this.getComment(this.id);
   }
   getComments(): void {
@@ -25,6 +25,9 @@ export class PostCommentsComponent implements OnInit {
   }
   getComment(id: string): void {
     this.commentsService.getComment(id)
-      .subscribe(comment => this.comment = comment);
+      .subscribe(comment => {
+        this.comment = comment;
+        console.log('comment', this.comment);
+      });
   }
 }

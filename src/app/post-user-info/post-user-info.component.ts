@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './post-user-info.component.html',
   styleUrls: ['./post-user-info.component.scss']
 })
-export class PostUserInfoComponent implements OnInit, AfterViewInit {
+export class PostUserInfoComponent implements OnInit {
   post: Post[];
   user: User[];
   postId: string;
@@ -19,15 +19,16 @@ export class PostUserInfoComponent implements OnInit, AfterViewInit {
   constructor(private postService: PostService, private userService: UserService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.postId = this.route.snapshot.paramMap.get('id');
+    this.postId = this.route.snapshot.paramMap.get('id').toString();
     this.getPost(this.postId);
-    this.getUser(2);
-  }
-  ngAfterViewInit() {
   }
   getPost(id: string): void {
     this.postService.getPost(id)
-      .subscribe(post => this.post = post );
+      .subscribe(post => {
+        this.post = post;
+        console.log(this.post);
+        this.getUser(post.userId);
+      } );
   }
   goToView(id: number): void {
     this.router.navigateByUrl('/post-view/' + id);
