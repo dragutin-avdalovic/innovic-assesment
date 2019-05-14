@@ -15,7 +15,7 @@ export class PostUserInfoComponent implements OnInit {
   post: Post[];
   user: User[];
   postId: string;
-  userId: number;
+  userId: string;
   constructor(private postService: PostService, private userService: UserService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -25,16 +25,17 @@ export class PostUserInfoComponent implements OnInit {
   getPost(id: string): void {
     this.postService.getPost(id)
       .subscribe(post => {
+        console.log('post', post);
+        console.log('this post', this.post);
         this.post = post;
-        console.log(post);
-        console.log(this.post);
-        this.getUser(1);
+        this.userId = this.post.userId;
+        this.getUser( this.userId );
       } );
   }
   goToView(id: number): void {
     this.router.navigateByUrl('/post-view/' + id);
   }
-  getUser(id: number): void {
+  getUser(id: string): void {
     this.userService.getUser(id)
       .subscribe(user => this.user = user);
   }

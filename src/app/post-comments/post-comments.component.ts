@@ -27,7 +27,6 @@ export class PostCommentsComponent implements OnInit {
     this.commentsService.getComment(id)
       .subscribe(comment => {
         this.comment = comment;
-        console.log('comment', this.comment);
       });
   }
 }

@@ -14,7 +14,7 @@ export class UserService {
     return this.http.get<User[]>(this.usersUrl);
   }
   /** GET heroes from the server */
-  getUser(id: number): Observable<User[]> {
+  getUser(id: string): Observable<User[]> {
     return this.http.get<User[]>(this.usersUrl + '/' + id);
   }
 }
