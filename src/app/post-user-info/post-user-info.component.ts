@@ -26,11 +26,12 @@ export class PostUserInfoComponent implements OnInit {
     this.postService.getPost(id)
       .subscribe(post => {
         console.log('post', post);
-        console.log('this post', this.post);
         this.post = post;
-        this.userId = this.post.userId;
-        this.getUser( this.userId );
-      } );
+        console.log('this post', this.post);
+        this.userId = '1';
+        console.log('us id', this.userId);
+        this.getUser(this.userId);
+      });
   }
   goToView(id: number): void {
     this.router.navigateByUrl('/post-view/' + id);
