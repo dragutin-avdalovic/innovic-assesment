@@ -26,8 +26,9 @@ export class PostUserInfoComponent implements OnInit {
     this.postService.getPost(id)
       .subscribe(post => {
         this.post = post;
+        console.log(post);
         console.log(this.post);
-        this.getUser(post.userId);
+        this.getUser(1);
       } );
   }
   goToView(id: number): void {
