@@ -12,8 +12,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./post-user-info.component.scss']
 })
 export class PostUserInfoComponent implements OnInit {
-  post: Post[];
-  user: User[];
+  post: any[];
+  user: any[];
   postId: string;
   userId: string;
   constructor(private postService: PostService, private userService: UserService, private router: Router, private route: ActivatedRoute) { }
@@ -28,9 +28,6 @@ export class PostUserInfoComponent implements OnInit {
         console.log('post', post);
         this.post = post;
         console.log('this post', this.post);
-        this.userId = this.postId;
-        console.log('us id', this.userId);
-        this.getUser(this.userId);
       });
   }
   goToView(id: number): void {
