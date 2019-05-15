@@ -28,7 +28,7 @@ export class PostUserInfoComponent implements OnInit {
         console.log('post', post);
         this.post = post;
         console.log('this post', this.post);
-        this.userId = '1';
+        this.userId = this.postId;
         console.log('us id', this.userId);
         this.getUser(this.userId);
       });
