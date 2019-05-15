@@ -12,8 +12,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./post-details.component.scss']
 })
 export class PostDetailsComponent implements OnInit {
-  post: Post[];
-  user: User[];
+  post: any;
+  user: any;
   postId: string;
   userId: number;
   constructor(private postService: PostService, private userService: UserService, private router: Router, private route: ActivatedRoute) { }
