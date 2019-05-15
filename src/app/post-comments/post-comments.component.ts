@@ -10,8 +10,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./post-comments.component.scss']
 })
 export class PostCommentsComponent implements OnInit {
-  comments: Comment[];
-  comment: Comment[];
+  comments: any;
+  comment: any;
   id: string;
   constructor(private commentsService: CommentsService, private router: Router, private route: ActivatedRoute) { }
   ngOnInit() {
