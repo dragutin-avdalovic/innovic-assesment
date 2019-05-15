@@ -11,7 +11,7 @@ export class PostService {
   private postsUrl = 'https://jsonplaceholder.typicode.com/posts/';
   constructor( private http: HttpClient) { }
   /** GET heroes from the server */
-  getPost(id: string): Observable<Post[]> {
-    return this.http.get<Post[]>(this.postsUrl + id);
+  getPost(id: string): Observable<any> {
+    return this.http.get<any>(this.postsUrl + id);
   }
 }
