@@ -11,9 +11,15 @@ export class EditViewComponent implements OnInit {
     name: new FormControl(''),
     description: new FormControl(''),
   });
+  result: any;
   constructor() { }
 
   ngOnInit() {
   }
 
+  onSubmit(): void {
+    this.result.personalData = Object.assign({}, this.edit);
+
+    // Do useful stuff with the gathered data
+  }
 }
