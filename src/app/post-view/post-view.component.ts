@@ -28,7 +28,8 @@ export class PostViewComponent implements OnInit {
   goToView(id: number): void {
     this.router.navigateByUrl('/post-view/' + id);
   }
-  editPost() {
-    console.log('edit');
+  editPost(): void  {
+    console.log('edit', this.postId);
+    this.router.navigateByUrl('/edit-view');
   }
 }

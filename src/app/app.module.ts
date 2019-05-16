@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,7 @@ import { PostViewComponent } from './post-view/post-view.component';
 import { PostUserInfoComponent } from './post-user-info/post-user-info.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { PostCommentsComponent } from './post-comments/post-comments.component';
+import { EditViewComponent } from './edit-view/edit-view.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PostCommentsComponent } from './post-comments/post-comments.component';
     PostViewComponent,
     PostUserInfoComponent,
     PostDetailsComponent,
-    PostCommentsComponent
+    PostCommentsComponent,
+    EditViewComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +37,7 @@ import { PostCommentsComponent } from './post-comments/post-comments.component';
     AlertModule.forRoot(),
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
