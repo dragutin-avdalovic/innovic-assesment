@@ -4,12 +4,25 @@
   margin: 0 !important;
 }
 .col {
-  height: calc(100vh - 327px);
+  height: calc(100vh - 328px);
   overflow: auto;
 }
 .col-info {
-  height: 35vh;
+  height: 30vh;
 }
 .col-details {
   height: 25vh;
 }
+.right-align {
+  float: right;
+  text-align: right;
+  width: 100%;
+  margin-top: 2vh;
+  margin-right: 5%;
+}
+.edit-post-button {
+  width: 8em;
+  height: 3em;
+  border: solid 1px #4d6de6;
+}
+
