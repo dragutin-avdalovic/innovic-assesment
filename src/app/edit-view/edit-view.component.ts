@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // import custom validator to validate that password and confirm password fields match
 import { MustMatch } from './must-match.validator';
+import { PostService} from '../post.service';
 
 @Component({
   selector: 'app-edit-view',
@@ -9,30 +10,29 @@ import { MustMatch } from './must-match.validator';
   styleUrls: ['./edit-view.component.scss']
 })
 export class EditViewComponent implements OnInit {
-  registerForm: FormGroup;
+  postForm: FormGroup;
   submitted = false;
-  constructor(private formBuilder: FormBuilder) { }
+  post: any;
+  id: string;
+  constructor(private formBuilder: FormBuilder, private postService: PostService) { }
 
   ngOnInit() {
-    this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required]
+    this.post = this.postService.getPost(this.id);
+    this.postForm = this.formBuilder.group({
+      title: ['', Validators.required],
+      body: ['', Validators.required],
     }, {
-      validator: MustMatch('password', 'confirmPassword')
     });
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.registerForm.controls; }
+  get f() { return this.postForm.controls; }
 
   onSubmit() {
     this.submitted = true;
 
     // stop here if form is invalid
-    if (this.registerForm.invalid) {
+    if (this.postForm.invalid) {
       return;
     }
   }
