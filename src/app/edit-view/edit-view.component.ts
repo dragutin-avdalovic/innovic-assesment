@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-// import custom validator to validate that password and confirm password fields match
-import { MustMatch } from './must-match.validator';
 import { PostService} from '../post.service';
+import {HttpHeaders, HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-edit-view',
@@ -27,6 +26,7 @@ export class EditViewComponent implements OnInit {
 
   // convenience getter for easy access to form fields
   get f() { return this.postForm.controls; }
+  /** PUT: update the hero on the server. Returns the updated hero upon success. */
 
   onSubmit() {
     this.submitted = true;
