@@ -18,13 +18,15 @@ export class EditViewComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private postService: PostService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.post = this.postService.getPost(this.id);
     this.postForm = this.formBuilder.group({
-      title: [this.post.title, Validators.required],
-      body: [this.post.body, Validators.required],
+      title: ['a', Validators.required],
+      body: ['a', Validators.required],
     }, {
     });
+    this.id = this.route.snapshot.paramMap.get('id');
+    console.log('id 1', this.id);
+    this.postService.getPost(this.id.toString()).subscribe( post => this.post  = post );
+    console.log('post 1', this.post);
   }
 
   // convenience getter for easy access to form fields
