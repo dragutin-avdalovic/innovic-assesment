@@ -15,18 +15,21 @@ export class EditViewComponent implements OnInit {
   submitted = false;
   post: any;
   id: string;
+  title: string;
+  body: string;
   constructor(private formBuilder: FormBuilder, private postService: PostService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.postForm = this.formBuilder.group({
-      title: ['a', Validators.required],
-      body: ['a', Validators.required],
-    }, {
-    });
     this.id = this.route.snapshot.paramMap.get('id');
     console.log('id 1', this.id);
-    this.postService.getPost(this.id.toString()).subscribe( post => this.post  = post );
-    console.log('post 1', this.post);
+    this.postService.getPost(this.id.toString()).subscribe(
+      post => { this.post  = post; this.title = post.title; this.body = post.body;
+        this.postForm = this.formBuilder.group({
+          title: [this.title, Validators.required],
+          body: [this.body, Validators.required],
+        }, {
+        });
+      });
   }
 
   // convenience getter for easy access to form fields
@@ -35,8 +38,8 @@ export class EditViewComponent implements OnInit {
   onSubmit() {
     console.log('submited');
     this.submitted = true;
-    console.log('id', this.id);
-    console.log('post', this.post);
+    this.post = this.postForm.value;
+    console.log('postAAA', this.post);
     this.postService.updatePost(this.id, this.post);
     // stop here if form is invalid
     if (this.postForm.invalid) {
