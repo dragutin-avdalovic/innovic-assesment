@@ -14,10 +14,7 @@ export class PostService {
   getPost(id: string): Observable<any> {
     return this.http.get<any>(this.postsUrl + id);
   }
-  updatePost(post: Post): Observable<any> {
-    return this.http.put<Hero>(this.postsUrl, post)
-      .pipe(
-        catchError(this.handleError('updateHero', post))
-      );
+  updatePost(id: string, post: Post): Observable<any> {
+    return this.http.put<any>(this.postsUrl + id, post);
   }
 }
