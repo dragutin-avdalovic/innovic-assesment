@@ -20,8 +20,13 @@ export class EditViewComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private postService: PostService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.postForm = this.formBuilder.group({
+      title: ['', Validators.required],
+      body: ['', Validators.required],
+    }, {
+    });
     this.id = this.route.snapshot.paramMap.get('id');
-    console.log('id 1', this.id);
+    console.log('id first', this.id);
     this.postService.getPost(this.id.toString()).subscribe(
     post => {  this.post  = post; this.title = post.title; this.body = post.body;
                     this.postForm = this.formBuilder.group({
