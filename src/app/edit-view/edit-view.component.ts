@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PostService} from '../post.service';
 import {Router} from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-edit-view',
