@@ -51,6 +51,7 @@ export class EditViewComponent implements OnInit {
     this.post.userId = this.userId;
     console.log('post', this.post);
     this.postService.updatePost(this.id, this.post);
+    this.router.navigateByUrl('/post-view/' + this.id);
     // stop here if form is invalid
     if (this.postForm.invalid) {
       return;
