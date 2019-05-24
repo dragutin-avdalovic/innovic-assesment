@@ -21,11 +21,13 @@
   margin-right: 5%;
 }
 .edit-post-button {
+  margin: 1em;
   width: 8em;
   height: 3em;
   border: solid 1px #0056b3;
   color: red;
   background: white;
+  border-radius: 5%;
 }
 .edit-post-button:hover {
   background-color: #2d3246;

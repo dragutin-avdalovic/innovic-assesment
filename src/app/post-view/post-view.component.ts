@@ -32,4 +32,8 @@ export class PostViewComponent implements OnInit {
     console.log('edit', this.postId);
     this.router.navigateByUrl('/edit-view/' + id);
   }
+  addPost(): void  {
+    console.log('ADS', this.postId);
+    this.router.navigateByUrl('/edit-view/');
+  }
 }

@@ -44,7 +44,6 @@ export class EditViewComponent implements OnInit {
   get f() { return this.postForm.controls; }
 
   onSubmit() {
-    console.log('submited');
     this.submitted = true;
     this.post = this.postForm.value;
     this.post.id = this.id;
