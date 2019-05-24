@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PostService} from '../post.service';
+import {Router} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-view',
@@ -6,10 +10,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-view.component.scss']
 })
 export class AddViewComponent implements OnInit {
-
-  constructor() { }
+  postForm: FormGroup;
+  submitted = false;
+  post: any;
+  id: string;
+  title: string;
+  body: string;
+  userId: string;
+  constructor(private formBuilder: FormBuilder, private postService: PostService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.postForm = this.formBuilder.group({
+      title: ['', Validators.required],
+      body: ['', Validators.required],
+    }, {
+    });
+  }
+  // convenience getter for easy access to form fields
+  get f() { return this.postForm.controls; }
+
+  onSubmit() {
+    this.submitted = true;
+    this.post = this.postForm.value;
+    this.postService.updatePost(this.id, this.post);
+    this.router.navigateByUrl('/post-view/' + this.id);
+    // stop here if form is invalid
+    if (this.postForm.invalid) {
+      return;
+    }
   }
 
 }
