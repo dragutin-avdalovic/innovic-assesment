@@ -16,6 +16,7 @@ import { PostUserInfoComponent } from './post-user-info/post-user-info.component
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { PostCommentsComponent } from './post-comments/post-comments.component';
 import { EditViewComponent } from './edit-view/edit-view.component';
+import { AddViewComponent } from './add-view/add-view.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { EditViewComponent } from './edit-view/edit-view.component';
     PostUserInfoComponent,
     PostDetailsComponent,
     PostCommentsComponent,
-    EditViewComponent
+    EditViewComponent,
+    AddViewComponent
   ],
   imports: [
     BrowserModule,
