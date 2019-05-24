@@ -17,4 +17,7 @@ export class PostService {
   updatePost(id: string, post: Post): Observable<any> {
     return this.http.put<any>(this.postsUrl + id, post);
   }
+  addPost(post: Post): Observable<any> {
+    return this.http.post<any>(this.postsUrl, post);
+  }
 }
