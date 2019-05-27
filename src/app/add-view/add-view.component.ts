@@ -32,6 +32,9 @@ export class AddViewComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.post = this.postForm.value;
+    this.userId = '1';
+    this.post.userId = this.userId;
+    console.log(this.post);
     this.postService.addPost(this.post);
     this.router.navigateByUrl('/post-list');
     // stop here if form is invalid
