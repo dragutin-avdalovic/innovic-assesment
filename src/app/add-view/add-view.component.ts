@@ -28,7 +28,7 @@ export class AddViewComponent implements OnInit {
   }
   // convenience getter for easy access to form fields
   get f() { return this.postForm.controls; }
-
+  // submit function
   onSubmit() {
     this.submitted = true;
     this.post = this.postForm.value;
